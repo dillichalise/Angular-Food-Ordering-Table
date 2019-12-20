@@ -19,10 +19,7 @@ const routes: Routes = [
     path:'edit/:id',
     component: CreateComponent
   },
-  {
-    path:'**',
-    component: ListComponent
-  },
+  
   {
     path: '**',
     redirectTo: '/notFound'
