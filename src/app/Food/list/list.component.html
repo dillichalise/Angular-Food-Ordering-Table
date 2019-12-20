@@ -1,0 +1,26 @@
+<div class="container">
+    <h3>List of All Foods</h3>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Food Name</th>
+                <th scope="col">Food Price</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let detail of foodsData">
+                <td>{{detail.id}}</td>
+                <td>{{detail.name}}</td>
+                <td>{{detail.price}}</td>
+                <td style="display: flex">
+                    <!-- <button type="button" class="btn btn-primary btn-sm" (click)="viewFood()">View</button> -->
+                <!-- <button type="button" class="btn btn-warning btn-sm" routerLink="/edit/{{detail.id}}">Edit</button> -->
+                <button type="button" class="btn btn-danger btn-sm ml-1" (click)="delete(detail.id)" >Delete</button>
+            </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

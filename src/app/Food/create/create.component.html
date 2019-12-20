@@ -1,0 +1,35 @@
+<div class="container">
+    <form [formGroup]="foodForm" (ngSubmit)="SubmitData(foodForm.value)">
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">{{panelTitle}}</h3>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="name" class="control-label">Food Name</label>
+            <input class="form-control" name="name" type="text"
+                [ngClass]="{ 'is-invalid':  easy.name.errors && easy.name.touched }" formControlName="name">
+            <div *ngIf="  easy.name.errors" class="invalid-feedback">
+                <span *ngIf="foodForm.controls.name.errors.required">
+                    Food name is required.
+                </span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="price" class="control-label">Food Price</label>
+            <input class="form-control" name="price" type="number"
+                [ngClass]="{ 'is-invalid': easy.price.errors && foodForm.controls.price.touched }"
+                formControlName="price">
+            <div *ngIf="easy.price.errors && easy.price.touched" class="invalid-feedback">
+                <span *ngIf="easy.price.errors.required">
+                    Food Price is required.
+                </span>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary" [disabled]="foodForm.invalid" [ngClass]="{ 'btn btn-danger': foodForm.invalid }" >Submit</button>
+    </form>
+</div>
