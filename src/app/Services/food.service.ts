@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Food } from '../Model/food';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http'
-import { FoodPosts } from '../Model/foodPost';
 
 @Injectable({
   providedIn: 'root'
@@ -21,13 +20,13 @@ export class FoodService {
     return this.httpClient.get<Food>(`${this.baseUrl}${id}`);
   }
 
-  addFood(food: FoodPosts): Observable<FoodPosts> {
-    return this.httpClient.post<FoodPosts>(`${this.baseUrl}`, food);
+  addFood(food: Food): Observable<Food> {
+    return this.httpClient.post<Food>(`${this.baseUrl}`, food);
 
   }
 
-  updateFood(food: FoodPosts): Observable<FoodPosts> {
-    return this.httpClient.put<FoodPosts>(`${this.baseUrl}${food.id}`, food);
+  updateFood(food: Food): Observable<Food> {
+    return this.httpClient.put<Food>(`${this.baseUrl}${food.id}`, food);
   }
 
   deleteFood(id: number): Observable<Food> {

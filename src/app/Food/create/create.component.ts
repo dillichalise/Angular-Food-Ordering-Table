@@ -4,7 +4,6 @@ import { Food } from 'src/app/Model/food';
 import { FoodService } from 'src/app/Services/food.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http'
-import { FoodPosts } from 'src/app/Model/foodPost';
 
 @Component({
   selector: 'app-create',
@@ -37,73 +36,64 @@ export class CreateComponent implements OnInit {
   // public getallfood: Food[] = [];
 
   ngOnInit() {
-    this._route.paramMap.subscribe(parameterMap => {
-      const id = +parameterMap.get('id');
-      this.getFood(id);
-    });
+    // this._route.paramMap.subscribe(parameterMap => {
+    //   const id = +parameterMap.get('id');
+    //   this.getFood(id);
+    // });
 
-  //   this.foodForm = this.formBuilder.group({
-  //     id: [''],
-  //     name: [''],
-  //     price: ['']
-  //   });
-
-  //   this._foodService.getFoodList().subscribe(data => {
-  //     this.food = data;
-  //   });
+ 
   }
 
-  private getFood(id: number) {
-    if (id == 0) {
-      this.food = {
-        id: null,
-        name: null,
-        price: null
-      };
-      this.panelTitle = 'Create Food';
-    }
-    else {
-      this._foodService.getFood(id).subscribe(
-        (food) => { this.food = this.food; }
-      );
-      this.panelTitle = 'Edit Food';
-    }
-  }
+  // private getFood(id: number) {
+  //   if (id == 0) {
+  //     this.food = {
+  //       id: null,
+  //       name: null,
+  //       price: null
+  //     };
+  //     this.panelTitle = 'Create Food';
+  //   }
+  //   else {
+  //     this._foodService.getFood(id).subscribe(
+  //       (food) => { this.food = this.food; }
+  //     );
+  //     this.panelTitle = 'Edit Food';
+  //   }
+  // }
 
   get easy() {
     return this.foodForm.controls;
   }
 
-  SubmitData(postValues) {
-    this.submitted = true;
-    this.foodForm.reset();
-    if (this.food.id == null) {
-      this._foodService.addFood(postValues).subscribe(
-        (data) => {
-          console.log(data);
-          this._router.navigate(['list']);
-        }
-      );
-    } else{
-      this._foodService.updateFood(postValues).subscribe(
-        () => {
-          this.foodForm.reset();
-          this._router.navigate(['list']);
-        }
-      )
-    }
-
-  }
-
-  // logFormValue(postValues) {
+  // SubmitData(any) {
   //   this.submitted = true;
   //   this.foodForm.reset();
-
-  //   this._foodService.addFood(postValues).subscribe(
-  //     () => {
-  //       console.log(postValues);
-  //     });
-  //   this._router.navigate(['list']);
+  //   if (this.food.id == null) {
+  //     this._foodService.addFood(any).subscribe(
+  //       (data) => {
+  //         console.log(data);
+  //         this._router.navigate(['list']);
+  //       }
+  //     );
+  //   } else{
+  //     this._foodService.updateFood(any).subscribe(
+  //       () => {
+  //         this._router.navigate(['list']);
+  //       }
+  //     )
+  //   }
 
   // }
+
+  SubmitData(any) {
+    this.submitted = true;
+    this.foodForm.reset();
+
+    this._foodService.addFood(any).subscribe(
+      () => {
+        console.log(any);
+      });
+    this._router.navigate(['list']);
+
+  }
 }
