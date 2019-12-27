@@ -1,0 +1,34 @@
+<div class="container bg-light">
+    <h3>Food Menu</h3>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Food Name</th>
+                <th scope="col">Food Price</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let detail of foodsData">
+                <td>{{detail.id}}</td>
+                <td>{{detail.name}} </td>
+                <td>{{detail.price}}</td>
+                <td style="display: flex">
+                    <button type="button" class="btn btn-primary" [disabled]="clicked" (click)="orderThisFood(detail.price)" >Order
+                        this</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <div>
+        Total Cost: <span>{{sum}}</span>
+    </div>
+
+
+   
+
+</div>

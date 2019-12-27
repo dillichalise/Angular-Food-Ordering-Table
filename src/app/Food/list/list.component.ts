@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DefaultIterableDiffer } from '@angular/core';
 import { FoodService } from 'src/app/Services/food.service';
 import { Router } from '@angular/router';
 
@@ -8,32 +8,53 @@ import { Router } from '@angular/router';
   styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit {
+
   foodsData: any;
+  public sum = 0;
+
 
   constructor(
     private _foodService: FoodService,
+    private _router: Router,
+
   ) {
-    this.foodsData=[];
-   }
+    this.foodsData = [];
+
+  }
 
   ngOnInit() {
     this.listAllFoods();
   }
 
-  listAllFoods(){
+  listAllFoods() {
     this._foodService.getFoodList().subscribe((response: any) => {
-        this.foodsData = response;
+      this.foodsData = response;
     });
   }
 
-  delete(id: number){
-    this._foodService.deleteFood(id).subscribe(data=>{
+  delete(id: number) {
+    this._foodService.deleteFood(id).subscribe(data => {
       console.log(data);
       this.listAllFoods();
     })
   }
- 
- 
+
+  ClearForm() {
+    this.listAllFoods();
+    // this._router.navigate(['list']);
+  }
+
+
+  orderThisFood(price: number) {
+    console.log(price);
+    this.sum = this.sum+price;
+  }
+  
+
+  listOrderedFood() {
+
+  }
+
 
   // viewFood(){
   //  this._router.navigate(['/viewFood', this.foodsData.id])

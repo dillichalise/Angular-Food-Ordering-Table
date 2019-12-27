@@ -11,16 +11,26 @@
         </thead>
 
         <tbody>
-            <tr *ngFor="let detail of foodsData">
+            <tr  *ngFor="let detail of foodsData"  >
                 <td>{{detail.id}}</td>
-                <td>{{detail.name}}</td>
+                <td>{{detail.name}} </td>
                 <td>{{detail.price}}</td>
                 <td style="display: flex">
                     <!-- <button type="button" class="btn btn-primary btn-sm" (click)="viewFood()">View</button> -->
                 <!-- <button type="button" class="btn btn-warning btn-sm" routerLink="/edit/{{detail.id}}">Edit</button> -->
                 <button type="button" class="btn btn-danger btn-sm ml-1" (click)="delete(detail.id)" >Delete</button>
+                <button type="submit" class="btn btn-primary" (click)="orderThisFood(detail.price)">Order this</button>
             </td>
             </tr>
         </tbody>
     </table>
+
+
+    <div>
+        Total Cost: <span>{{sum}}</span>
+    </div>
+    <button type="button" class="btn btn-primary" (click)="listOrderedFood()">Order Food</button>
 </div>
+
+<button type="button" class="btn btn-primary"  (click)="ClearForm()" >Clear</button>
+

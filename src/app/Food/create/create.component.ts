@@ -3,7 +3,6 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Food } from 'src/app/Model/food';
 import { FoodService } from 'src/app/Services/food.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http'
 
 @Component({
   selector: 'app-create',
@@ -16,21 +15,14 @@ export class CreateComponent implements OnInit {
   panelTitle: string;
 
   food: Food = new Food();
-  // food: Food = {
-  //   id: null,
-  //   foodName: null,
-  //   foodPrice: null
-  // };
+ 
 
   constructor(
     private formBuilder: FormBuilder,
     private _foodService: FoodService,
     private _router: Router,
     private _route: ActivatedRoute) {
-    this.foodForm = this.formBuilder.group({
-      'name': [this.food.name, [Validators.required]],
-      'price': [this.food.price, [Validators.required]]
-    });
+   
   }
 
   // public getallfood: Food[] = [];
@@ -40,6 +32,10 @@ export class CreateComponent implements OnInit {
     //   const id = +parameterMap.get('id');
     //   this.getFood(id);
     // });
+    this.foodForm = this.formBuilder.group({
+      'name': [this.food.name, [Validators.required]],
+      'price': [this.food.price, [Validators.required]]
+    });
 
  
   }
@@ -92,8 +88,9 @@ export class CreateComponent implements OnInit {
     this._foodService.addFood(any).subscribe(
       () => {
         console.log(any);
+        this._router.navigate(['list']);
+
       });
-    this._router.navigate(['list']);
 
   }
 }
