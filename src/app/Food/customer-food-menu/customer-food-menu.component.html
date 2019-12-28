@@ -16,7 +16,7 @@
                 <td>{{detail.name}} </td>
                 <td>{{detail.price}}</td>
                 <td style="display: flex">
-                    <button type="button" class="btn btn-primary" [disabled]="clicked" (click)="orderThisFood(detail.price)" >Order
+                    <button type="button" class="btn btn-primary" [disabled]="clicked" (click)="orderThisFood(detail.price,  detail.name, detail.id)" >Order
                         this</button>
                 </td>
             </tr>

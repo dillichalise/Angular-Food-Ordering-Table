@@ -16,6 +16,7 @@ import { OrderComponent } from './food/order/order.component';
 import { CustomerFoodMenuComponent } from './Food/customer-food-menu/customer-food-menu.component';
 import { TableComponent } from './Food/table/table.component';
 import { BillComponent } from './Food/bill/bill.component';
+import { DataService } from './Services/data.service';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,7 @@ import { BillComponent } from './Food/bill/bill.component';
     NgbModule
 
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

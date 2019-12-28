@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { FoodService } from 'src/app/Services/food.service';
+import { DataService } from 'src/app/Services/data.service';
 
 @Component({
   selector: 'app-bill',
@@ -7,9 +9,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BillComponent implements OnInit {
 
-  constructor() { }
+  //  name: ;
+  //  id: number;
+  //  public price;
+  // title: string;
+  // public name;
+  public data;
+  foodsData: any[];
+  
+
+  constructor(
+    public _foodService: FoodService,
+    public _dataService: DataService
+  ) {
+
+    this._foodService = _foodService;
+    this.data = _dataService.getOption();
+    this.foodsData = [];
+ 
+   }
 
   ngOnInit() {
   }
+
+
+
+  
 
 }

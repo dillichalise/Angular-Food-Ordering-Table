@@ -1,3 +1,5 @@
+
+
 <div class="bg-light">
     <h3>Bill of  {{title}}</h3>
     <table class="table">
@@ -10,16 +12,19 @@
 
       </thead>
       <tbody>
-        <tr>
+        <tr >
           <td>1</td>
-          <td>Momo</td>
-          <td>120</td>
+          <td>{{data.name}}</td>
+          <td>{{data.price}}</td>
         </tr>
         <tr>
             <th colspan="2">Total Price</th>
-            <th>1000</th>
+            <th>{{data.total}}</th>
         </tr>
         
       </tbody>
     </table>
   </div>
+
+
+
