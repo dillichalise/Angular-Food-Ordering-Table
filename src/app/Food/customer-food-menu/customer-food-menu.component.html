@@ -1,5 +1,6 @@
 <div class="container bg-light">
-    <h3>Food Menu</h3>
+    <div >
+        <h3>Food Menu</h3>
 
     <table class="table">
         <thead>
@@ -16,19 +17,15 @@
                 <td>{{detail.name}} </td>
                 <td>{{detail.price}}</td>
                 <td style="display: flex">
-                    <button type="button" class="btn btn-primary" [disabled]="clicked" (click)="orderThisFood(detail.price,  detail.name, detail.id)" >Order
+                    <button type="button" class="btn btn-primary" [disabled]="clicked" (click)="orderThisFood(detail)" >Order
                         this</button>
                 </td>
             </tr>
         </tbody>
     </table>
-
-
+    </div>
+    
     <div>
         Total Cost: <span>{{sum}}</span>
     </div>
-
-
-   
-
 </div>

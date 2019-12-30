@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FoodService } from 'src/app/Services/food.service';
 import { DataService } from 'src/app/Services/data.service';
+import { Food } from 'src/app/Model/food';
 
 @Component({
   selector: 'app-bill',
@@ -14,26 +15,35 @@ export class BillComponent implements OnInit {
   //  public price;
   // title: string;
   // public name;
-  public data;
-  foodsData: any[];
-  
+  foodsData: Food[] = [];
+  public totalprice = 0;
+  public price: number;
+
 
   constructor(
     public _foodService: FoodService,
     public _dataService: DataService
   ) {
-
-    this._foodService = _foodService;
-    this.data = _dataService.getOption();
-    this.foodsData = [];
  
    }
 
   ngOnInit() {
+    this._dataService.foodListObservable.subscribe(value => {
+      this.foodsData = value;
+      console.log('Orders are', value);
+      // this.totalprice = this.totalprice;
+      // console.log(this.totalprice)
+
+    });
+
   }
 
-
-
-  
+  calculateTotal(price){
+    this.price = price;
+    this.totalprice = this.totalprice + price;
+    console.log(this.totalprice);
+    
+      
+  }
 
 }

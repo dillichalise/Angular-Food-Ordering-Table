@@ -1,26 +1,28 @@
-
-
 <div class="bg-light">
     <h3>Bill of  {{title}}</h3>
     <table class="table">
       <thead>
         <tr>
-          <th>SN</th>
+          <th>S No.</th>
           <th>Food Name</th>
           <th>Price</th>
         </tr>
 
       </thead>
       <tbody>
-        <tr >
-          <td>1</td>
+        <tr *ngFor="let data of foodsData; let i = index;">
+          <td>{{i + 1}}</td>
           <td>{{data.name}}</td>
           <td>{{data.price}}</td>
+          <td>
+            <button type="button"  (click)="calculateTotal(data.price)">calculate</button>
+          </td>
         </tr>
         <tr>
             <th colspan="2">Total Price</th>
-            <th>{{data.total}}</th>
+            <th>{{totalprice}}</th>
         </tr>
+        
         
       </tbody>
     </table>

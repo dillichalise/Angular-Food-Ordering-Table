@@ -1,14 +1,22 @@
 import { Injectable } from "@angular/core";
+import { Food } from '../Model/food';
+import { Observable, BehaviorSubject } from 'rxjs';
 
 @Injectable()
 export class DataService {
-    private data ={};
+    private updateListener = new BehaviorSubject<any>(null);
+    foodListObservable = this.updateListener.asObservable();
 
-    setOption(option, value){
-        this.data[option] = value;
+    private orderedFoodList: Array<Food> = new Array<Food>();
+
+    addOrderedFood(food: Food) {
+        this.orderedFoodList.push(food);
+        this.updateListener.next(this.orderedFoodList);
+    
+        
     }
 
-    getOption(){
-        return this.data;
+    getFoodList(): Array<Food> {
+        return this.orderedFoodList;
     }
 }

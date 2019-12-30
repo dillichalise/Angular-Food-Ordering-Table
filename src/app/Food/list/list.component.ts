@@ -9,7 +9,8 @@ import { Router } from '@angular/router';
 })
 export class ListComponent implements OnInit {
 
-  foodsData: any;
+  foodsData: [];
+  
   public sum = 0;
 
 
@@ -52,6 +53,7 @@ export class ListComponent implements OnInit {
   
 
   listOrderedFood() {
+
 
   }
 
